@@ -25,8 +25,6 @@ import { enumCaseNames, objectPropertyNames, unionMemberName, getAccessorName } 
 import { transformationForType, followTargetType, Transformation } from "./Transformers";
 import { TargetLanguage } from "./TargetLanguage";
 
-const wordWrap: (s: string) => string = require("wordwrap")(90);
-
 export const topLevelNameOrder = 1;
 
 const givenNameOrder = 10;
@@ -42,13 +40,7 @@ const unionMemberNameOrder = 40;
 
 function splitDescription(descriptions: Iterable<string> | undefined): string[] | undefined {
     if (descriptions === undefined) return undefined;
-    const description = Array.from(descriptions)
-        .join("\n\n")
-        .trim();
-    if (description === "") return undefined;
-    return wordWrap(description)
-        .split("\n")
-        .map(l => l.trim());
+    return Array.from(descriptions);
 }
 
 export type ForbiddenWordsInfo = { names: (Name | string)[]; includeGlobalForbidden: boolean };

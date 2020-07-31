@@ -14,7 +14,6 @@ const TypeAttributes_1 = require("./attributes/TypeAttributes");
 const Description_1 = require("./attributes/Description");
 const AccessorNames_1 = require("./attributes/AccessorNames");
 const Transformers_1 = require("./Transformers");
-const wordWrap = require("wordwrap")(90);
 exports.topLevelNameOrder = 1;
 const givenNameOrder = 10;
 exports.inferredNameOrder = 30;
@@ -26,14 +25,7 @@ const unionMemberNameOrder = 40;
 function splitDescription(descriptions) {
     if (descriptions === undefined)
         return undefined;
-    const description = Array.from(descriptions)
-        .join("\n\n")
-        .trim();
-    if (description === "")
-        return undefined;
-    return wordWrap(description)
-        .split("\n")
-        .map(l => l.trim());
+    return Array.from(descriptions);
 }
 const assignedNameAttributeKind = new TypeAttributes_1.TypeAttributeKind("assignedName");
 const assignedPropertyNamesAttributeKind = new TypeAttributes_1.TypeAttributeKind("assignedPropertyNames");
